@@ -11,6 +11,8 @@ struct ContentView: View {
     var body: some View {
         ZStack{
             Image("background-plain")
+                .resizable()
+                .ignoresSafeArea()
             VStack{
                 Spacer()
                 Image("logo")
@@ -29,15 +31,22 @@ struct ContentView: View {
                     Spacer()
                     VStack {
                         Text("Player")
+                            .font(.headline)
+                            .padding(.bottom, 10.0)
                         Text("0")
-                    }.foregroundColor(Color.white)
+                            .font(.largeTitle)
+                    }
                     Spacer()
                     VStack {
                         Text("CPU")
+                            .font(.headline)
+                            .padding(.bottom, 10.0)
                         Text("0")
-                    }.foregroundColor(Color.white)
+                            .font(.largeTitle)
+                    }
                     Spacer()
                 }
+                .foregroundColor(Color.white)
                 Spacer()
             }
         }
