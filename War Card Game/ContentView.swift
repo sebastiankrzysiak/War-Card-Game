@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @State var playerScroe = 0
     @State var cpuScore = 0
+    @State var tieScore = 0
     
     var body: some View {
         
@@ -40,12 +41,19 @@ struct ContentView: View {
                     Image("button")
                 }
                 
-                
                 Spacer()
                 HStack {
                     Spacer()
                     VStack {
                         Text("Player")
+                            .font(.headline)
+                            .padding(.bottom, 10.0)
+                        Text(String(playerScroe))
+                            .font(.largeTitle)
+                    }
+                    Spacer()
+                    VStack {
+                        Text("Tie")
                             .font(.headline)
                             .padding(.bottom, 10.0)
                         Text(String(playerScroe))
@@ -62,7 +70,13 @@ struct ContentView: View {
                     Spacer()
                 }
                 .foregroundColor(Color.white)
+                
                 Spacer()
+                
+                Button("Reset") {
+                    reset()
+                }
+                .foregroundColor(Color.white)
             }
         }
     }
@@ -83,6 +97,15 @@ struct ContentView: View {
             // Add 1 to cpu score
             cpuScore += 1
         }
+        else {
+            tieScore += 1
+        }
+    }
+    
+    func reset() {
+        playerScroe = 0
+        cpuScore = 0
+        tieScore = 0
     }
     
     struct ContentView_Previews: PreviewProvider {
