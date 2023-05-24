@@ -56,7 +56,7 @@ struct ContentView: View {
                         Text("Tie")
                             .font(.headline)
                             .padding(.bottom, 10.0)
-                        Text(String(playerScroe))
+                        Text(String(tieScore))
                             .font(.largeTitle)
                     }
                     Spacer()
