@@ -39,7 +39,7 @@ struct ContentView: View {
                 } label: {
                     Image("button")
                 }
-
+                
                 
                 Spacer()
                 HStack {
@@ -84,10 +84,10 @@ struct ContentView: View {
             cpuScore += 1
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
