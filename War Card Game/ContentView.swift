@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var playerCard = "card7"
-    @State var cpuCard = "card13"
+    @State var leftCard = "back"
+    @State var rightCard = "back"
     
     @State var playerScroe = 0
     @State var cpuScore = 0
@@ -28,19 +28,23 @@ struct ContentView: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Image(playerCard)
+                    Button {
+                        leftdeal()
+                    } label: {
+                        Image(leftCard)
+                    }
                     Spacer()
-                    Image(cpuCard)
+                    Button {
+                        rightdeal()
+                    } label: {
+                        Image(rightCard)
+                    }
                     Spacer()
                 }
-                Spacer()
-                
-                Button {
-                    deal()
-                } label: {
-                    Image("button")
+                Button("Next") {
+                    next()
                 }
-                
+                .foregroundColor(Color.white)
                 Spacer()
                 HStack {
                     Spacer()
@@ -81,13 +85,34 @@ struct ContentView: View {
         }
     }
     
-    func deal() {
+    func leftdeal() {
         // Randomize the playes card
         var playerCardValue = Int.random(in: 2...14)
-        playerCard = "card" + String(playerCardValue)
+        leftCard = "card" + String(playerCardValue)
         // Randomize the cpus card
         var cpuCardValue = Int.random(in: 2...14)
-        cpuCard = "card" + String(cpuCardValue)
+        rightCard = "card" + String(cpuCardValue)
+        // Update the score
+        if playerCardValue > cpuCardValue {
+            // Add 1 to player score
+            playerScroe += 1
+        }
+        else if playerCardValue < cpuCardValue {
+            // Add 1 to cpu score
+            cpuScore += 1
+        }
+        else {
+            tieScore += 1
+        }
+    }
+    
+    func rightdeal() {
+        // Randomize the playes card
+        var playerCardValue = Int.random(in: 2...14)
+        rightCard = "card" + String(playerCardValue)
+        // Randomize the cpus card
+        var cpuCardValue = Int.random(in: 2...14)
+        leftCard = "card" + String(cpuCardValue)
         // Update the score
         if playerCardValue > cpuCardValue {
             // Add 1 to player score
@@ -106,6 +131,13 @@ struct ContentView: View {
         playerScroe = 0
         cpuScore = 0
         tieScore = 0
+        leftCard = "back"
+        rightCard = "back"
+    }
+    
+    func next() {
+        leftCard = "back"
+        rightCard = "back"
     }
     
     struct ContentView_Previews: PreviewProvider {
