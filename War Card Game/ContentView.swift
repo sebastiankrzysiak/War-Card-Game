@@ -29,22 +29,28 @@ struct ContentView: View {
                 HStack{
                     Spacer()
                     Button {
-                        leftdeal()
+                        if leftCard == "back" && rightCard == "back" {
+                            leftdeal()
+                        }
+                        else {
+                            next()
+                        }
                     } label: {
                         Image(leftCard)
                     }
                     Spacer()
                     Button {
-                        rightdeal()
+                        if leftCard == "back" && rightCard == "back" {
+                            rightdeal()
+                        }
+                        else {
+                            next()
+                        }
                     } label: {
                         Image(rightCard)
                     }
                     Spacer()
                 }
-                Button("Next") {
-                    next()
-                }
-                .foregroundColor(Color.white)
                 Spacer()
                 HStack {
                     Spacer()
@@ -80,7 +86,8 @@ struct ContentView: View {
                 Button("Reset") {
                     reset()
                 }
-                .foregroundColor(Color.white)
+                .foregroundColor(.white)
+                .buttonStyle(.bordered)
             }
         }
     }
