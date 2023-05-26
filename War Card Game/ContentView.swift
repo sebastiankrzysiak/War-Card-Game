@@ -83,7 +83,7 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button("Reset") {
+                Button("Reset Score") {
                     reset()
                 }
                 .foregroundColor(.white)
